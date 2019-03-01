@@ -121,6 +121,14 @@ class App extends Component {
                 <div className="input-div">
                   <input placeholder="Password" type="password" name="password" />
                 </div>
+                <div className="other-links">
+                  <div className="link">
+                    Forgot password?
+                  </div>
+                  <div className="link">
+                    Register here
+                  </div>
+                </div>
                 {
                   error ?
                   <span className="error-message"> {error} </span>
