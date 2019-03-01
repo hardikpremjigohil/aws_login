@@ -17,9 +17,9 @@
 }
 
 .form-head {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
-  padding-bottom: 36px;
+  padding: 24px 0; 
 }
 
 .input-div {
