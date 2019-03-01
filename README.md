@@ -1,4 +1,4 @@
-#dyvi-web
+#amazon_aws_login
 
 Steps to run:
 
