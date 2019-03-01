@@ -47,11 +47,13 @@ input {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
+  opacity: .9;
 }
 
 .link {
-  color: #b465f5;
+  color: #333;
   cursor: pointer;
+  opacity: 1;
 }
 
 .link:hover {
