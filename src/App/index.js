@@ -3,6 +3,8 @@ import AWS from 'aws-sdk';
 import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js';
 import './App.css';
 
+import Dashboard from '../Dashboard'
+
 const USER_POOL_ID='us-east-3_asdfDasdfFc'
 const CLIENT_ID='2k3asdfzxcvlkjoliuadnsflkjcc'
 const IDENTITY_POOL_ID='dasdasdfasdfasd-5basdfb4-asdf9-8asdfcxv-b6asdf2cxsfg5ads6'
@@ -143,9 +145,7 @@ class App extends Component {
               </form>
             </div>
           ) : (
-            <div className="dashboard">
-              Dashboard Page of {username}
-            </div>
+            <Dashboard username={username} />
           )
         }
       </div>
