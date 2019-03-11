@@ -112,7 +112,7 @@ class App extends Component {
           !loggedIn ?
           (
             <div className="form-box">
-              <form onSubmit={this.authenticateUser}>
+              {/* <form onSubmit={this.authenticateUser}> */}
                 <div className="form-head">
                   Login
                 </div>
@@ -139,10 +139,9 @@ class App extends Component {
                 {
                   loading ?
                   <button className="button disabled">  <div className="loader"/> </button> 
-                  : <button className="button" type="submit"> <div> Log In </div> </button>
+                  : <button className="button" type="submit" onClick={() => this.setState({ loggedIn: true })}> <div> Log In </div> </button>
                 }
-                
-              </form>
+              {/* </form> */}
             </div>
           ) : (
             <Dashboard username={username} />
