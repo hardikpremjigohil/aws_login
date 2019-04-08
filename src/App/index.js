@@ -174,8 +174,8 @@ class App extends Component {
                     </Button>
                     
                     </div>
-                    <Divider style={{ width: '100%' }} />
-                    <div style={{ width: '100%' }}>
+                    <Divider style={{ width: '100%'}} />
+                    <div style={{ width: '100%', height: '100%', overflow: 'scroll' }}>
                       <div className="info-box-item">
                         <div>
                         <Button variant="contained" className={classes.button}>
