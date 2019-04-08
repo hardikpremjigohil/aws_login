@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import AWS from 'aws-sdk';
 import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js';
 import './App.css';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+
+import PeopleIcon from '@material-ui/icons/People';
 
 import Dashboard from '../Dashboard'
 
@@ -106,42 +111,129 @@ class App extends Component {
   render() {
     const { username, loggedIn, loading, error} = this.state;
 
+    const { classes } = this.props;
+
     return (
       <div className="App" style={{ backgroundImage: './bg.jpg' }}>
         {
           !loggedIn ?
           (
-            <div className="form-box">
-              {/* <form onSubmit={this.authenticateUser}> */}
-                <div className="form-head">
-                  Login
-                </div>
+            <div className="login-page-div">
+              <div className="login-box-wrapper">
+                <div className="form-box">
+                  {/* <form onSubmit={this.authenticateUser}> */}
+                    <div className="form-head">
+                      Login
+                    </div>
 
-                <div className="input-div">
-                  <input placeholder="Username" type="text" name="username" />
+                    <div className="input-div">
+                      <input placeholder="Username" type="text" name="username" />
+                    </div>
+                    <div className="input-div">
+                      <input placeholder="Password" type="password" name="password" />
+                    </div>
+                    <div className="other-links">
+                      <div className="link">
+                        Forgot password?
+                      </div>
+                      <div className="link">
+                        Register here
+                      </div>
+                    </div>
+                    {
+                      error ?
+                      <span className="error-message"> {error} </span>
+                      : undefined
+                    }
+                    {
+                      loading ?
+                      <button className="button disabled">  <div className="loader"/> </button> 
+                      : <button className="button" type="submit" onClick={() => this.setState({ loggedIn: true })}> <div> Log In </div> </button>
+                    }
+                  {/* </form> */}
                 </div>
-                <div className="input-div">
-                  <input placeholder="Password" type="password" name="password" />
-                </div>
-                <div className="other-links">
-                  <div className="link">
-                    Forgot password?
+              {/* Right side */}
+              </div>
+              <div className="info-box-wrapper">
+                  <div className="info-box">
+                    <div className="top-buttons-wrapper">
+                    <Button variant="outlined" size="small" className={classes.button}>
+                      About us
+                    </Button>
+                    <Button variant="outlined" size="small" className={classes.button}>
+                      Mission
+                    </Button>
+                    <Button variant="outlined" size="small" className={classes.button}>
+                      Functions
+                    </Button>
+                    <Button variant="outlined" size="small" className={classes.button}>
+                      Meet the team
+                    </Button>
+                    <Button variant="outlined" size="small" className={classes.button}>
+                      Contact Us
+                    </Button>
+                    
+                    </div>
+                    <Divider style={{ width: '100%' }} />
+                    <div style={{ width: '100%' }}>
+                      <div className="info-box-item">
+                        <div>
+                        <Button variant="contained" className={classes.button}>
+                          About us
+                        </Button>
+                        </div>
+                        <div className="item-content" > We are professional people who serves. </div>
+                      </div>
+                      <div className="info-box-item">
+                      <div>
+                        <Button variant="contained" className={classes.button}>
+                        Mission
+                        </Button>
+                        </div>
+                        <div className="item-content" > Our mission... </div>
+                      </div>
+                      <div className="info-box-item">
+                      <div>
+                        <Button variant="contained" className={classes.button}>
+                        Functions
+                        </Button>
+                        </div>
+                        <div className="item-content" > 
+                          <div> 1... 2... </div>
+                          <div> 3... 4... </div>
+                        </div>
+                      </div>
+                      <div className="info-box-item">
+                      <div>
+                        <Button variant="contained" className={classes.button}>
+                        Meet the team
+                        </Button>
+                        </div>
+                        <div className="item-content" >
+                          <div className="persons-wrapper"> 
+                            <div className="person-div">
+                              <PeopleIcon />
+                              Person 1
+                            </div>
+                            <div className="person-div">
+                              <PeopleIcon />
+                              Person 2
+                            </div>
+                            <div className="person-div">
+                              <PeopleIcon />
+                              Person 3
+                            </div>
+                            <div className="person-div">
+                              <PeopleIcon />
+                              Person 4
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="link">
-                    Register here
-                  </div>
-                </div>
-                {
-                  error ?
-                  <span className="error-message"> {error} </span>
-                  : undefined
-                }
-                {
-                  loading ?
-                  <button className="button disabled">  <div className="loader"/> </button> 
-                  : <button className="button" type="submit" onClick={() => this.setState({ loggedIn: true })}> <div> Log In </div> </button>
-                }
-              {/* </form> */}
+                  
+              </div>
             </div>
           ) : (
             <Dashboard username={username} />
@@ -152,4 +244,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+});
+
+export default withStyles(styles)(App);
