@@ -114,12 +114,12 @@ class App extends Component {
     const { classes } = this.props;
 
     return (
-      <div className="App" style={{ backgroundImage: './bg.jpg' }}>
+      <div className="App">
         {
           !loggedIn ?
           (
             <div className="login-page-div">
-              <div className="login-box-wrapper">
+              <div className="login-box-wrapper" style={{ backgroundImage: './bg.jpg' }}>
                 <div className="form-box">
                   {/* <form onSubmit={this.authenticateUser}> */}
                     <div className="form-head">
