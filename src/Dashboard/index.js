@@ -28,7 +28,7 @@ import Looks4 from '@material-ui/icons/Looks4';
 import Looks5 from '@material-ui/icons/Looks5';
 import Looks6 from '@material-ui/icons/Looks6';
 
-import { subjects, instructionalMethods, campuses, courseLevels, partOfTerms, instructors, sessions, attributeTypes } from '../consts/consts'
+import { subjects, instructionalMethods, campuses, courseLevels, partOfTerms, instructors, sessions, attributeTypes, HAVEDROPDOWN, WANTDROPDOWN } from '../consts/consts'
 
 const styles = theme => ({
   root: {
@@ -62,8 +62,11 @@ class Dashboard extends Component {
   state = {
     openProfileDialog: false,
     button3: false,
+    button4: false,
 
     subject: 0, 
+    haveSelected: 0,
+    wantSelected: 0,
     instructionalMethod: 0, 
     campus: 0, 
     courseLevel: 0,
@@ -90,10 +93,17 @@ class Dashboard extends Component {
       })
   }
 
+  openButton4Form = () => {
+      this.setState({
+          button4: !this.state.button4
+      })
+  }
+
   handleClose = () => {
       this.setState({
         openProfileDialog: false,
-        button3: false
+        button3: false,
+        button4: false
       })
   }
 
@@ -125,7 +135,7 @@ class Dashboard extends Component {
             </Button>
         </div>
         <div className={classes.container}>
-            <Button variant="outlined" size="large" color="primary" className={classes.button}>
+            <Button variant="outlined" size="large" color="primary" className={classes.button} onClick={this.openButton4Form}>
                 Button
                 <Looks4 className={classes.rightIcon} />
             </Button>
@@ -497,6 +507,80 @@ class Dashboard extends Component {
         </DialogContent>
         </Dialog>
         {/* ____ dialog end */}
+
+
+
+        {/* ____ dialog start */}
+        <Dialog
+          open={this.state.button4}
+          onClose={this.handleClose}
+          scroll="paper"
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Button 4</DialogTitle>
+          <DialogContent>
+          <div style={{ display: 'flex', alignItems: 'center', minWidth: '280px' }}>
+          <h2> I have </h2>
+            <TextField
+                id="haveSelected"
+                select
+                label="haveSelected"
+                className={classes.textField}
+                value={this.state.haveSelected}
+                onChange={this.handleChange('haveSelected')}
+                InputLabelProps={{ shrink: true }}
+                SelectProps={{
+                    MenuProps: {
+                        className: classes.menu,
+                    },
+                }}
+                margin="dense"
+                variant="outlined"
+                style={{ maxWidth: '180px', marginLeft: '8px' }}
+                fullWidth
+                >
+                {HAVEDROPDOWN.map(option => (
+                    <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                    </MenuItem>
+                ))}
+            </TextField>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', minWidth: '280px' }} > 
+            <h2> I want </h2>
+            <TextField
+                id="wantSelected"
+                select
+                label="wantSelected"
+                className={classes.textField}
+                value={this.state.wantSelected}
+                onChange={this.handleChange('wantSelected')}
+                InputLabelProps={{ shrink: true }}
+                SelectProps={{
+                    MenuProps: {
+                        className: classes.menu,
+                    },
+                }}
+                margin="dense"
+                variant="outlined"
+                style={{ maxWidth: '180px', marginLeft: '8px' }}
+                fullWidth
+                >
+                {WANTDROPDOWN.map(option => (
+                    <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                    </MenuItem>
+                ))}
+            </TextField>
+            </div>
+            <DialogActions>
+                <Button type="submit" onClick={this.handleClose} color="primary">
+                Post
+                </Button>
+            </DialogActions>
+        </DialogContent>
+        </Dialog>
+
 
       </div>
     );

@@ -117,3 +117,34 @@ export const subjects = [
       label: 'Diversity Course-Domestic',
     },
   ];
+
+  export const WANTDROPDOWN = [
+    {
+      value: '0',
+      label: '0',
+    },
+    {
+      value: '1',
+      label: '1',
+    },
+    {
+      value: '2',
+      label: '2',
+    },
+  ];
+  
+  export const HAVEDROPDOWN = [
+    {
+      value: '0',
+      label: '0',
+    },
+    {
+      value: '1',
+      label: '1',
+    },
+    {
+      value: '2',
+      label: '2',
+    },
+  ];
+  
